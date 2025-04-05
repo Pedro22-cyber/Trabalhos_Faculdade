@@ -7,43 +7,77 @@ import java.awt.event.ActionListener;
 
 public class Cadastrar {
     public static void main(String[] args) {
-        JFrame janela = new JFrame("Cadastros");
-        janela.setLayout(null);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //fechar a janela
-        janela.setBounds(0,0,330,480); // tamanho da tela
-        janela.setVisible(true); // tornar a tela visivel
+        // Janela principal
+        JFrame janela = new JFrame("Cadastro");
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setSize(400, 300);
+        janela.setLocationRelativeTo(null); // Centraliza na tela
 
-        JLabel Title = new JLabel("Cadastro",2);
-        Title.setBounds(130,-40,200,200);
+        // Painel principal com layout automático
+        JPanel painel = new JPanel();
+        painel.setBackground(Color.WHITE);
 
-        JLabel TextNome = new JLabel("Equipe:",2);
-        TextNome.setBounds(10,100,120,60);
+        // Componentes da interface
+        JLabel titulo = new JLabel("Cadastro");
+        titulo.setFont(new Font("Arial", Font.BOLD, 24));
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JTextField NameEquipe = new JTextField();
-        NameEquipe.setBounds(70,120,200,30);
+        JLabel labelEquipe = new JLabel("Equipe:");
+        JTextField campoEquipe = new JTextField(20);
 
-        JButton Confirme = new JButton("Cadastrar");
-        Confirme.setBounds(70,190,200,40);
+        JButton botaoCadastrar = new JButton("Cadastrar");
+        JButton botaoVoltar = new JButton("←");
 
-        JButton exit = new JButton("←");
-        exit.setBounds(0,0,50,25);
-        exit.setBackground(Color.white);
-
-        Confirme.addActionListener(new ActionListener() {
+        // Ação do botão Cadastrar
+        botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String Confir = NameEquipe.getText();
-                System.out.printf("%s Cadastrado! ",Confir);
-                System.out.println(" ");
-                NameEquipe.setText("");
+                String nomeEquipe = campoEquipe.getText().trim();
+                if (!nomeEquipe.isEmpty()) {
+                    JOptionPane.showMessageDialog(janela, nomeEquipe + " cadastrado com sucesso!");
+                    campoEquipe.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(janela, "Por favor, insira o nome da equipe.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
-        janela.add(TextNome);
-        janela.add(NameEquipe);
-        janela.add(Confirme);
-        janela.add(exit);
-        janela.add(Title);
+        // Ação do botão Voltar
+        botaoVoltar.addActionListener(e -> janela.dispose());
 
+        // Usando GroupLayout para layout responsivo
+        GroupLayout layout = new GroupLayout(painel);
+        painel.setLayout(layout);
+
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(botaoVoltar, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+                .addGap(250)) // empurra o botão para esquerda
+            .addComponent(titulo)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(labelEquipe)
+                .addComponent(campoEquipe))
+            .addComponent(botaoCadastrar, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+        );
+
+        layout.setVerticalGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(botaoVoltar))
+            .addGap(10)
+            .addComponent(titulo)
+            .addGap(30)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(labelEquipe)
+                .addComponent(campoEquipe))
+            .addGap(30)
+            .addComponent(botaoCadastrar)
+        );
+
+        // Finaliza e exibe
+        janela.setContentPane(painel);
+        janela.setVisible(true);
     }
 }
