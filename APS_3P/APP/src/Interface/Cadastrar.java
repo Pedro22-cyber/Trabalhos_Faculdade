@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Cadastrar {
-
     public static void main(String[] args) {
         JFrame janela = new JFrame("Cadastros");
         janela.setLayout(null);
