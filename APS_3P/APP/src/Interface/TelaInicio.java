@@ -3,6 +3,7 @@ package Interface;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaInicio extends JFrame {
 
@@ -35,8 +36,13 @@ public class TelaInicio extends JFrame {
         botaoCadastrar.setBackground(Color.LIGHT_GRAY);
         botaoIniciar.setBackground(Color.LIGHT_GRAY);
 
-        botaoCadastrar.addActionListener(e -> System.out.println("Cadastrar clicado"));
-        botaoIniciar.addActionListener(e -> System.out.println("Iniciar clicado"));
+        botaoCadastrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
 
         // Layout responsivo
         GroupLayout layout = new GroupLayout(painel);
