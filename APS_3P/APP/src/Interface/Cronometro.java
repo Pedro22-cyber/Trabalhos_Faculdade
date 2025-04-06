@@ -20,6 +20,7 @@ public class Cronometro extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setResizable(false);
+        setLocationRelativeTo(null);
 
         tempoLabel = new JLabel(formatarTempo(horas, minutos, segundos), SwingConstants.CENTER);
         tempoLabel.setFont(new Font("Arial", Font.BOLD, 24));
