@@ -16,7 +16,7 @@ public class Cronometro extends JFrame implements ActionListener {
 
     public Cronometro() {
         setTitle("Cronômetro");
-        setSize(300, 150);
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setResizable(false);
