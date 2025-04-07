@@ -51,17 +51,17 @@ public class TelaInicio extends JFrame {
         layout.setAutoCreateContainerGaps(true);
 
         layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(botaoCadastrar, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-                .addComponent(botaoIniciar, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-        );
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoCadastrar, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoIniciar, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)));
+
 
         layout.setVerticalGroup(layout.createSequentialGroup()
-            .addGap(100) // espaço acima dos botões
-            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                .addComponent(botaoCadastrar, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                .addComponent(botaoIniciar, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
-        );
+                .addGap(100) // espaço acima dos botões
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(botaoCadastrar, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoIniciar, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)));
+                        
 
         // Aplicando painel à janela
         janela.setContentPane(painel);
