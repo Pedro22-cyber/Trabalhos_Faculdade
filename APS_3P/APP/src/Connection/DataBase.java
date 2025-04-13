@@ -3,28 +3,27 @@ package Connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class DataBase {
-    private static DataBase instance;
+    private static final String url = "jdbc:mysql://localhost3306";
+    private static final String user = "root";
+    private static final String password = "1618f17LLP*";
 
-    private final Connection connection;
-
-    private DataBase(){
-    try{
-        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/jdbc","root","1618f17LLP*");
-    } catch (SQLException ex) {
-        throw new RuntimeException("Ocorreu um erro ao se conectar com banco de dados");
-    }
-    }
-
-    public static DataBase getInstance(){
-        if(Objects.isNull(instance)){
-            instance = new DataBase();
+    private static Connection conn;
+    
+    //verificar se a conexao foi estanciada
+    public static Connection getConexao(){
+        
+        try {
+            if(conn == null){
+                conn = DriverManager.getConnection(url,user,password);
+                return conn;
+            }else{
+                return conn;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return  null;
         }
-        return instance;
-    }
-    public Connection connection(){
-        return connection;
     }
 }
